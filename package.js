@@ -8,7 +8,7 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.10.1');
   api.use('ecmascript');
-  api.use('swydo:ddp-apollo', 'server');
+  api.use('swydo:ddp-apollo@3.0.0', 'server');
 
   api.mainModule('server.js', 'server');
   api.mainModule('client.js', 'client');
