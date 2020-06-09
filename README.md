@@ -36,14 +36,21 @@ See below how to use it:
 ```javascript
 import { startGraphQLServer } from "meteor/quave:graphql/server";
 
+import { logger } from 'meteor/quave:logs/logger';
+
+
 import { DateTimeTypeDef } from "meteor/quave:graphql/DateTimeTypeDef";
 import { DateTimeResolver } from "meteor/quave:graphql/DateTimeResolver";
 
-startGraphQLServer({ typeDefs: [DateTimeTypeDef], resolvers: [DateTimeResolver] });
+const log = error => logger.error({ message: 'GraphQL server error', error })
+
+startGraphQLServer({ typeDefs: [DateTimeTypeDef], resolvers: [DateTimeResolver], log });
 ```
 `typeDefs` expects an array of types definitions (schemas) and `resolvers` expects an array of resolvers. You can use a single type definition and a single resolver but usually is better to split them in multiple files. 
 
 You don't need to use `DateTimeTypeDef` and `DateTimeResolver` they are just examples.
+
+You also don't need to provide a log function, by default it will log to console.error.
 
 #### Client
 In the client you should call `startGraphQLClient`, this is going to return an Apollo client already configured to you.

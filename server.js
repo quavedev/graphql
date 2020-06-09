@@ -3,14 +3,16 @@ import {setup} from 'meteor/swydo:ddp-apollo';
 import {makeExecutableSchema} from 'graphql-tools';
 import {getSchema, load} from 'graphql-load';
 
-export const startGraphQLServer = ({typeDefs, resolvers}) => {
+const defaultLog = e => console.error('GraphQL server error', e);
+
+export const startGraphQLServer = ({typeDefs, resolvers, log}) => {
   load({
     typeDefs,
     resolvers,
   });
   const schema = makeExecutableSchema({
     ...getSchema(),
-    logger: {log: e => console.error('GraphQL server error', e)},
+    logger: { log: log || defaultLog },
   });
   setup({schema});
 };

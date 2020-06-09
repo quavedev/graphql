@@ -1,6 +1,6 @@
 Package.describe({
   name: 'quave:graphql',
-  version: '0.0.1',
+  version: '1.0.0',
   summary: 'Utility package to create GraphQL setup in a standard way',
   git: 'https://github.com/quavedev/graphql',
 });
