@@ -57,7 +57,7 @@ In the client you should call `startGraphQLClient`, this is going to return an A
 ```javascript
 import { startGraphQLClient } from "meteor/quave:graphql/client";
 
-const apolloClient = startGraphQLClient();
+const apolloClient = startGraphQLClient({ connectToDevTools: true });
 ```
 Then you can use the `apolloClient` as you want, see below two examples.
  
@@ -77,7 +77,7 @@ import { startGraphQLClient } from "meteor/quave:graphql/client";
 
 import { ApolloProvider } from '@apollo/react-hooks';
 
-const apolloClient = startGraphQLClient();
+const apolloClient = startGraphQLClient({ connectToDevTools: true });
 
 Meteor.startup(() => {
   render(
@@ -146,7 +146,7 @@ import { startGraphQLClient } from "meteor/quave:graphql/client";
 
 import gql from 'graphql-tag';
 
-const apolloClient = startGraphQLClient();
+const apolloClient = startGraphQLClient({ connectToDevTools: true });
 
 Meteor.startup(() => {
   apolloClient.query({
